@@ -176,10 +176,10 @@ namespace Arrays
 
             const int ROW_SIZE = 3;
             const int COL_SIZE = 5;
-            // comma           size1(rows) size2(columns)
-            //  |                        | |
-            //  |                        | |
-            //  V                        V V
+            // comma           size1(rows)         size2(columns)
+            //  |                        |           |
+            //  |                        |           |
+            //  V                        V           V
             int[,] myMultiInts = new int[ROW_SIZE, COL_SIZE];
 
             // We could create 3 dimensional arrays by adding another comma, or even 4 dimensional arrays (mind blown)
