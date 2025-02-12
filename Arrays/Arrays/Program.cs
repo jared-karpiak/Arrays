@@ -196,7 +196,7 @@ namespace Arrays
                 }
             }
 
-            // Now let's see visualize what the multidimensional array looks like.
+            // Now let's visualize what the multidimensional array looks like.
             Console.WriteLine("------------------");
 
             for (int row = 0; row < ROW_SIZE; row++)
