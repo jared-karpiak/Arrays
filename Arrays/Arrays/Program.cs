@@ -81,7 +81,7 @@ namespace Arrays
                 // in square brackets.
                 Console.WriteLine($"Day {i} is \"{daysOfWeek[i]}.\"");
             }
-
+            Console.WriteLine("------------------");
             // If we pass in an index that is outside of the range, we will get the dreaded IndexOutOfRange exception, which is
             // a blight on a developer's career.
             // For example:
@@ -96,11 +96,119 @@ namespace Arrays
             myInts2[0] += 5;
 
             Console.WriteLine($"The value of myInts2[0] is now '{myInts2[0]}'.");
+            Console.WriteLine("------------------");
+            /***** Sorting Arrays *****/
+            // Very often we will get arrays that are unsorted, the order of the index might not be
+            // the alphabetical order for example.
 
-            /***** Multi-dimensional Arrays *****/
-            
+
+            // At this point in the code, the array myInts2 is structured like this:
+
+            // Index : Value
+            //   0   :   12
+            //   1   :   2
+            //   2   :   7
+            //   3   :   3
+            //   4   :   10
+
+            Console.WriteLine("Unsorted Array:\n");
+            for (int i = 0; i < myInts2.Length; i++)
+                Console.WriteLine($"Index {i} : {myInts2[i]}");
+
+            // This array is not yet sorted. If it were sorted, then the first index would have the lowest
+            // number, the second index the second lowest number, etc.
+            // C# provides us with a simple way to sort an array, using the Array.Sort() method.
+
+            //      array to sort
+            //            |
+            //            |
+            //            V
+            Array.Sort(myInts2);
+
+            // After the Array.Sort() method is executed, the array myInts2 will now look like this:
+
+            // Index : Value
+            //   0   :   2
+            //   1   :   3
+            //   2   :   7
+            //   3   :   10
+            //   4   :   12
+            Console.WriteLine("------------------");
+
+            Console.WriteLine("Sorted Array:\n");
+            for (int i = 0; i < myInts2.Length; i++)
+                Console.WriteLine($"Index {i} : {myInts2[i]}");
+
+            Console.WriteLine("------------------");
 
             /***** Random Number Generation *****/
+            // Whenever we want to generate a random number in C#, we need to use a class called Random.
+            // We need to create a new "object" that will perform the random number generation for us
+            Random rand = new Random();
+
+            // After we create the Random object, we call the method Next(), where we specify a range of
+            // values to select a random number from.
+            // We must provide the minimum value, which is inclusive (ie. included in the results)
+            // and we must provide the maximum value, which is exclusive (not included)
+
+            //             min (inclusive)  max (exclusive)
+            //                           |  |
+            //                           |  |
+            //                           V  V
+            int randomNumber = rand.Next(1, 11);
+
+            //The above code will return a number from 1 to 10, but will never return 11.
+
+            /***** Multi-dimensional Arrays *****/
+            // So far we have just looked at one-dimensional arrays, just a collection of single items.
+            // Imagine it has just been the x-axis of a grid.
+
+            // However, with arrays we can have introduce more dimension, arrays within arrays in away.
+            // For example, we could create a two dimensional array, which would resemble a spreadsheet
+            // or a table in a database. We would have rows and we would have columns.
+
+            // To declare another dimension to an array, we simply add commas whenever we want to add a new dimension
+            // indicate that we want to add another dimension.
+            // With two-dimensional arrays, the first set of indexes is usually called a "row"
+            // and the second set a "column"
+
+            // The following will create a two dimentional int array that holds 3 "rows" of 5 "columns" 
+
+            const int ROW_SIZE = 3;
+            const int COL_SIZE = 5;
+            // comma           size1(rows) size2(columns)
+            //  |                        | |
+            //  |                        | |
+            //  V                        V V
+            int[,] myMultiInts = new int[ROW_SIZE, COL_SIZE];
+
+            // We could create 3 dimensional arrays by adding another comma, or even 4 dimensional arrays (mind blown)
+
+            // Let's populate this multi-dimensional array with some random numbers.
+
+            for (int row = 0; row < ROW_SIZE; row++)
+            {
+                for (int col = 0; col < COL_SIZE; col++)
+                {
+                    // to access the element at the specific location we have to make sure we specify
+                    // both the row and the column (think excel spreadsheet)
+                    myMultiInts[row, col] = rand.Next(1, 100);
+                }
+            }
+
+            // Now let's see visualize what the multidimensional array looks like.
+            Console.WriteLine("------------------");
+
+            for (int row = 0; row < ROW_SIZE; row++)
+            {
+                Console.Write($"Row {row}|   ");
+                for (int col = 0; col < COL_SIZE ; col++)
+                {
+                    Console.Write($"  {myMultiInts[row, col]}  |");
+                }
+                
+                Console.WriteLine(); // create a new line.
+            }
         }
     }
 }
