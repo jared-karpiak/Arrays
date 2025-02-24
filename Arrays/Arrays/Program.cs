@@ -50,6 +50,7 @@ namespace Arrays
             
             // here we declare our new array as before, but in curly braces we list the values we want it to have.
             // This array will hold 5 integers, each with the values that we listed in order.
+            // Using this method you will need to initialize all values or the compiler will throw an error.
             int[] myInts2 = new int[5] { 7, 2, 7, 3, 10 };
 
             // The second way to declare initialize the elements:
